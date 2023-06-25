@@ -1,0 +1,29 @@
+function firstUniqueChar(s) {
+  const charCount = new Map();
+
+  // Count the occurrence of each character
+  for (let i = 0; i < s.length; i++) {
+    const char = s[i];
+    if (charCount.has(char)) {
+      charCount.set(char, charCount.get(char) + 1);
+    } else {
+      charCount.set(char, 1);
+    }
+  }
+
+  // Find the first non-repeating character and return its index
+  for (let i = 0; i < s.length; i++) {
+    const char = s[i];
+    if (charCount.get(char) === 1) {
+      return i;
+    }
+  }
+
+  // No non-repeating character found
+  return -1;
+}
+
+// Example usage
+const str = "leetcode";
+const result = firstUniqueChar(str);
+console.log(result);  // Output: 0
